@@ -11,9 +11,9 @@ public class Patient {
     private String gender;
     private String occupation;
     private String healthCondition;
-    private Clock timeOfArrival;
+    private String timeOfArrival;
 
-    public Patient(String name, int age, String gender, String occupation, String healthCondition, Clock timeOfArrival){
+    public Patient(String name, int age, String gender, String occupation, String healthCondition, String timeOfArrival){
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -62,11 +62,11 @@ public class Patient {
         this.healthCondition = healthCondition;
     }
 
-    public Clock getTimeOfArrival() {
+    public String getTimeOfArrival() {
         return timeOfArrival;
     }
 
-    public void setTimeOfArrival(Clock timeOfArrival) {
+    public void setTimeOfArrival(String timeOfArrival) {
         this.timeOfArrival = timeOfArrival;
     }
 
