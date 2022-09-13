@@ -22,6 +22,15 @@ public class Patient {
         this.timeOfArrival = timeOfArrival;
     }
 
+    public Patient(String[] info){
+        name = info[0];
+        gender = info[1];
+        age = Integer.parseInt(info[2]);
+        occupation = info[3];
+        healthCondition = info[4];
+        timeOfArrival = info[5];
+    }
+
     public String getName() {
         return name;
     }
@@ -68,6 +77,18 @@ public class Patient {
 
     public void setTimeOfArrival(String timeOfArrival) {
         this.timeOfArrival = timeOfArrival;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", healthCondition='" + healthCondition + '\'' +
+                ", timeOfArrival='" + timeOfArrival + '\'' +
+                '}';
     }
 
     public static void main(String[] args) {
