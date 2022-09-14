@@ -9,13 +9,37 @@ public class Clinic {
     private Patient[] patients = new Patient[15];
     public void readData() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("patients.txt"));
-        String tmp = br.readLine();
+        String patientData = br.readLine();
         for (int i=0; i<15; i++) {
-            tmp = br.readLine();
-            String[] tmp2 = tmp.split("\t",6);
-            patients[i] = new Patient(tmp2);
-            System.out.println(patients[i].toString());
+            patientData = br.readLine();
+            String[] patientDataArray = patientData.split("\t",6);
+            patients[i] = new Patient(patientDataArray);
+            patients[i].setPriority(priorityCalculation(patients[i]));
+            //System.out.println(patients[i].toString());
         }
+    }
+
+    private int priorityCalculation(Patient patient){
+        int priority=0;
+        if (patient.getAge()>=60){priority++;}
+
+        if (patient.getOccupation().equals("Nurse") &&
+                patient.getOccupation().equals("Care Giver") &&
+                patient.getOccupation().equals("Teacher"))
+        {
+            priority++;
+        }
+        if (patient.getHealthCondition().equals(" Primary Immune Deficiency") &&
+                patient.getHealthCondition().equals("Cancer") &&
+                patient.getHealthCondition().equals("Diabetes") &&
+                patient.getHealthCondition().equals("Pregnant") &&
+                patient.getHealthCondition().equals("Asthma") &&
+                patient.getHealthCondition().equals("Cardiovascular Disease"))
+        {
+            priority++;
+        }
+
+        return priority;
     }
 
     public static void main(String[] args) throws  IOException{
