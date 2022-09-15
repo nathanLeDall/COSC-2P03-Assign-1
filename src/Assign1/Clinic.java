@@ -13,8 +13,10 @@ public class Clinic {
         for (int i=0; i<15; i++) {
             patientData = br.readLine();
             String[] patientDataArray = patientData.split("\t",6);
+            patientDataArray[4] = patientDataArray[4].replace(":","");
             patients[i] = new Patient(patientDataArray);
             patients[i].setPriority(priorityCalculation(patients[i]));
+
             System.out.println(patients[i].toString());
         }
     }

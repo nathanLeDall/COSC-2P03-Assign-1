@@ -6,7 +6,7 @@ public class Patient {
     private String gender;
     private String occupation;
     private String healthCondition;
-    private String timeOfArrival;
+    private int timeOfArrival;
     private int priority;
 
     public Patient(){
@@ -19,15 +19,16 @@ public class Patient {
         this.gender = gender;
         this.occupation = occupation;
         this.healthCondition = healthCondition;
-        this.timeOfArrival = timeOfArrival;
+        this.timeOfArrival = Integer.parseInt(timeOfArrival);
         this.priority = priority;
-    }public Patient(String name, int age, String gender, String occupation, String healthCondition, String timeOfArrival){
+    }
+    public Patient(String name, int age, String gender, String occupation, String healthCondition, String timeOfArrival){
         this.name = name;
         this.age = age;
         this.gender = gender;
         this.occupation = occupation;
         this.healthCondition = healthCondition;
-        this.timeOfArrival = timeOfArrival;
+        this.timeOfArrival = Integer.parseInt(timeOfArrival);
         priority = 0;
     }
 
@@ -37,7 +38,7 @@ public class Patient {
         age = Integer.parseInt(info[2]);
         occupation = info[3];
         healthCondition = info[4];
-        timeOfArrival = info[5];
+        timeOfArrival = Integer.parseInt(info[5]);
         this.priority = priority;
     }
     public Patient(String[] info){
@@ -46,7 +47,7 @@ public class Patient {
         age = Integer.parseInt(info[2]);
         occupation = info[3];
         healthCondition = info[4];
-        timeOfArrival = info[5];
+        timeOfArrival = Integer.parseInt(info[5]);
         priority = 0;
     }
 
@@ -90,12 +91,12 @@ public class Patient {
         this.healthCondition = healthCondition;
     }
 
-    public String getTimeOfArrival() {
+    public int getTimeOfArrival() {
         return timeOfArrival;
     }
 
     public void setTimeOfArrival(String timeOfArrival) {
-        this.timeOfArrival = timeOfArrival;
+        this.timeOfArrival = Integer.parseInt(timeOfArrival);
     }
 
     public void setPriority(int priority){
