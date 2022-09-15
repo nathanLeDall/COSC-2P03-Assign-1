@@ -15,6 +15,9 @@ public class Node {
         next = null;
         prev = null;
     }
+    public Node(){
+
+    }
 
     public Patient getPatient() {
         return patient;

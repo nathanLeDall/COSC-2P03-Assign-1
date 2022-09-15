@@ -6,7 +6,7 @@ import java.io.IOException;
 
 
 public class Clinic {
-    private Patient[] patients = new Patient[15];
+    private final Patient[] patients = new Patient[15];
     public void readData() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("patients.txt"));
         String patientData = br.readLine();
@@ -15,7 +15,7 @@ public class Clinic {
             String[] patientDataArray = patientData.split("\t",6);
             patients[i] = new Patient(patientDataArray);
             patients[i].setPriority(priorityCalculation(patients[i]));
-            //System.out.println(patients[i].toString());
+            System.out.println(patients[i].toString());
         }
     }
 
