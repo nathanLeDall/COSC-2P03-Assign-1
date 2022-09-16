@@ -17,15 +17,7 @@ public class Clinic {
             patientDataArray[5] = patientDataArray[5].replace(":","");
             patients[i] = new Patient(patientDataArray);
             patients[i].setPriority(priorityCalculation(patients[i]));
-            System.out.println(patients[i].toString());
         }
-    }
-
-    public void print(String[] tmp){
-        for (String tmp2: tmp){
-            System.out.print(tmp2);
-        }
-        System.out.println();
     }
 
     private int priorityCalculation(Patient patient){
@@ -49,18 +41,22 @@ public class Clinic {
         return priority;
     }
 
+    public void monitor(){
+        Clock clock = new Clock(8,59);
+        while(true){
+            clock.addOneMinute();
+        }
+        Patient patient = wq.removeMax();
+        System.out.println(patient.toString());
+    }
+
     public static void main(String[] args) throws  IOException{
+        long start = System.currentTimeMillis();
         Clinic c = new Clinic();
         c.readData();
-        int i;
-        for (i=0; i<15; i++){
+        c.monitor();
+        /*for (int i=0; i<15; i++){
             c.wq.insert(c.patients[i]);
-        }
-        System.out.println();
-        System.out.println();
-        System.out.println(i);
-        System.out.println();
-        System.out.println();
-        System.out.println(c.wq);
+        }*/
     }
 }
