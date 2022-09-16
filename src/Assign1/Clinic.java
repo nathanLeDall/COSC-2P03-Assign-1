@@ -52,9 +52,13 @@ public class Clinic {
     public static void main(String[] args) throws  IOException{
         Clinic c = new Clinic();
         c.readData();
-        for (Patient p: c.patients){
-            c.wq.insert(p);
+        int i;
+        for (i=0; i<15; i++){
+            c.wq.insert(c.patients[i]);
         }
+        System.out.println();
+        System.out.println();
+        System.out.println(i);
         System.out.println();
         System.out.println();
         System.out.println(c.wq);
