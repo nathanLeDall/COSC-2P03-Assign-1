@@ -1,12 +1,34 @@
 package Assign1;
 
 public class Clock {
-    public int hour;
-    public int minute;
+    private int hour;
+    private int minute;
     public Clock(int hour, int minute){
         this.hour = hour;
         this.minute = minute;
     }
+
+    public Clock(Clock c){
+        hour = c.getHour();
+        minute = c.getMinute();
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
     public void addOneMinute(){
         if (minute==59){
             minute=0;
@@ -40,6 +62,12 @@ public class Clock {
     public int getTime(){
         String timeTmp = String.valueOf(hour)+String.valueOf(minute);
         return Integer.parseInt(timeTmp);
+    }
+
+    public int timeElapsed(Clock other){
+        int tmp = Math.abs(((other.getHour()*60)+ other.getMinute()) - ((hour*60)+minute));
+        System.out.println(tmp);
+        return tmp;
     }
 }
 

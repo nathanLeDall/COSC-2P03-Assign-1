@@ -40,14 +40,26 @@ public class Clinic {
         }
         return priority;
     }
-
     public void monitor(){
         Clock clock = new Clock(8,59);
+        Clock timerCLock = new Clock(clock);
         while(true){
             clock.addOneMinute();
+            for (Patient p: patients){
+                if(p.getTimeOfArrival()==clock.getTime()){
+                    wq.insert(p);
+                    break;
+                }
+            }
+            if ((timerCLock.timeElapsed(clock))>=15){
+                try{
+                    System.out.println(wq.removeMax());
+                }catch (noPatientException E){
+                    System.out.println("no Patients in queue");
+                }
+                timerCLock = new Clock(clock);
+            }
         }
-        Patient patient = wq.removeMax();
-        System.out.println(patient.toString());
     }
 
     public static void main(String[] args) throws  IOException{

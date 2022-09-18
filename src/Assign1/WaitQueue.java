@@ -98,7 +98,10 @@ public class WaitQueue {
      *
      * @return
      */
-    public Patient removeMax(){
+    public Patient removeMax() throws noPatientException {
+        if (startOfQueue==null){
+            throw new noPatientException("there are no patients in the queue");
+        }
         Patient tmp = startOfQueue.getPatient();
         startOfQueue = startOfQueue.getNext();
         startOfQueue.setPrev(null);
