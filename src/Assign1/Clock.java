@@ -60,12 +60,17 @@ public class Clock {
         hour--;
     }
     public int getTime(){
-        String timeTmp = String.valueOf(hour)+String.valueOf(minute);
+        if (minute<10){
+            String timeTmp = hour +"0"+String.valueOf(minute);
+            return Integer.parseInt(timeTmp);
+        }
+        String timeTmp = hour +String.valueOf(minute);
         return Integer.parseInt(timeTmp);
     }
 
     public int timeElapsed(Clock other){
         int tmp = Math.abs(((other.getHour()*60)+ other.getMinute()) - ((hour*60)+minute));
+        //System.out.println("\n"+tmp+"\n");
         System.out.println(tmp);
         return tmp;
     }

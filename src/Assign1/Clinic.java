@@ -43,6 +43,7 @@ public class Clinic {
     public void monitor(){
         Clock clock = new Clock(8,59);
         Clock timerCLock = new Clock(clock);
+        int counter=0;
         while(true){
             clock.addOneMinute();
             for (Patient p: patients){
@@ -58,6 +59,8 @@ public class Clinic {
                     System.out.println("no Patients in queue");
                 }
                 timerCLock = new Clock(clock);
+                System.out.println("counter = "+counter);
+                counter++;
             }
         }
     }
@@ -67,8 +70,5 @@ public class Clinic {
         Clinic c = new Clinic();
         c.readData();
         c.monitor();
-        /*for (int i=0; i<15; i++){
-            c.wq.insert(c.patients[i]);
-        }*/
     }
 }

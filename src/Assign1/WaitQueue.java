@@ -102,6 +102,11 @@ public class WaitQueue {
         if (startOfQueue==null){
             throw new noPatientException("there are no patients in the queue");
         }
+        if (startOfQueue.getNext()==null){
+            Node tmp = startOfQueue;
+            startOfQueue = null;
+            return tmp.getPatient();
+        }
         Patient tmp = startOfQueue.getPatient();
         startOfQueue = startOfQueue.getNext();
         startOfQueue.setPrev(null);
