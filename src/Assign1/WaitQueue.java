@@ -6,25 +6,24 @@ public class WaitQueue {
     private Node startOfQueue;
 
     /**
-     *
-     *
+     * constructor initializes the start of queue vairable to be null
      */
     public WaitQueue(){
         startOfQueue = null;
     }
 
     /**
-     *
-     * @param patient
+     * insert a patient into the queue
+     * @param patient the patient to be inserted
      */
     public void insert(Patient patient){
         Node tmp = startOfQueue;
         while(true){
-            if (startOfQueue==null){
+            if (startOfQueue==null){//inserts the patient as the first node if the queue is empty
                 startOfQueue = new Node(patient);
                 return;
             }
-            if (startOfQueue.getNext()==null && startOfQueue.getPatient().getPriority()>patient.getPriority()){
+            if (startOfQueue.getNext()==null && startOfQueue.getPatient().getPriority()>patient.getPriority()){//inserts the patient at the end of the queue if there is only one patient in the queue
                 startOfQueue.setNext(new Node(patient,null,startOfQueue));
                 return;
             }
@@ -113,6 +112,10 @@ public class WaitQueue {
         return tmp;
     }
 
+    /**
+     * returns all the variables and all the patients in the queue in order
+     * @return a String of all the variables and all the patients in the queue in order
+     */
     @Override
     public String toString() {
         StringBuilder tmp = new StringBuilder();

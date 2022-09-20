@@ -27,26 +27,50 @@ public class Node {
         prev = null;
     }
 
+    /**
+     * returns the stored patient
+     * @return Patient the patient
+     */
     public Patient getPatient() {
         return patient;
     }
 
+    /**
+     * sets the current patient
+     * @param patient the patient to be stored
+     */
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
+    /**
+     * get the next ndoe
+     * @return Node the next node
+     */
     public Node getNext() {
         return next;
     }
 
+    /**
+     * set the next node
+     * @param next the next node
+     */
     public void setNext(Node next) {
         this.next = next;
     }
 
+    /**
+     * get the previous node
+     * @return Node the previous node
+     */
     public Node getPrev() {
         return prev;
     }
 
+    /**
+     * set the previous node
+     * @param prev the previous node
+     */
     public void setPrev(Node prev) {
         this.prev = prev;
     }

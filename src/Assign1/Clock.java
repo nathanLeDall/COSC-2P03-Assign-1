@@ -1,8 +1,8 @@
 package Assign1;
 
 public class Clock {
-    private int hour;
-    private int minute;
+    private int hour;//hours
+    private int minute;//minutes
 
     /**
      * constructor initializes hour and minute based on the values provided
