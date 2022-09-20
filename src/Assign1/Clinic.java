@@ -29,7 +29,7 @@ public class Clinic {
         {
             priority++;
         }
-        if (patient.getHealthCondition().equals(" Primary Immune Deficiency") ||
+        if (patient.getHealthCondition().equals("Primary Immune Deficiency") ||
                 patient.getHealthCondition().equals("Cancer") ||
                 patient.getHealthCondition().equals("Diabetes") ||
                 patient.getHealthCondition().equals("Pregnant") ||
@@ -69,6 +69,9 @@ public class Clinic {
         long start = System.currentTimeMillis();
         Clinic c = new Clinic();
         c.readData();
-        c.monitor();
+        /*for(Patient p: c.patients){
+            System.out.println(p);
+        }*/
+        //c.monitor();
     }
 }
