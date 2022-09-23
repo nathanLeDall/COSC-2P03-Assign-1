@@ -6,12 +6,12 @@ import java.io.IOException;
 
 
 public class Clinic {
-    public final Patient[] patients = new Patient[15];
-    public final WaitQueue wq = new WaitQueue();
+    public final Patient[] patients = new Patient[15];//the patients read from the text file
+    public final WaitQueue wq = new WaitQueue();//wait queue instance
     public void readData() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("patients.txt"));
         String patientData = br.readLine();
-        for (int i=0; i<15; i++) {
+        for (int i=0; i<15; i++) {//treats incoming raw data and creates new patient instances which are then stored in the patients array
             patientData = br.readLine();
             String[] patientDataArray = patientData.split("\t",6);
             patientDataArray[5] = patientDataArray[5].replace(":","");
@@ -22,11 +22,11 @@ public class Clinic {
 
     private int priorityCalculation(Patient patient){
         int priority=0;
-        if (patient.getAge()>=60){priority++;}
+        if (patient.getAge()>=60){priority++;} //adds one to priority if the patient is 60 and above
         if (patient.getOccupation().equals("Nurse") ||
                 patient.getOccupation().equals("Care Giver") ||
                 patient.getOccupation().equals("Teacher"))
-        {
+        {//adds one to the priority if the patient is a teacher, a caregiver, or a teacher
             priority++;
         }
         if (patient.getHealthCondition().equals("Primary Immune Deficiency") ||
@@ -35,24 +35,28 @@ public class Clinic {
                 patient.getHealthCondition().equals("Pregnant") ||
                 patient.getHealthCondition().equals("Asthma") ||
                 patient.getHealthCondition().equals("Cardiovascular Disease"))
-        {
+        {// adds one to the priority if the patient meets one of the above conditions
             priority++;
         }
         return priority;
     }
+
+    /**
+     * monitors the clinic and adds patients to the queue as they arrive and removes them every 15 mins
+     */
     public void monitor(){
         Clock clock = new Clock(8,59);
         Clock timerCLock = new Clock(clock);
         int counter=0;
         while(true){
             clock.addOneMinute();
-            for (Patient p: patients){
+            for (Patient p: patients){//adds a patient to the queue as they arrive according to their time of arrival data from the patients.txt file
                 if(p.getTimeOfArrival()==clock.getTime()){
                     wq.insert(p);
                     break;
                 }
             }
-            if ((timerCLock.timeElapsed(clock))>=15){
+            if ((timerCLock.timeElapsed(clock))>=15){//removing a patient from the queue every 15 mins
                 try{
                     System.out.println(wq.removeMax());
                 }catch (noPatientException E){
@@ -65,6 +69,11 @@ public class Clinic {
         }
     }
 
+    /**
+     * main method
+     * @param args takes in String[] args
+     * @throws IOException throws an IOExcpetion
+     */
     public static void main(String[] args) throws  IOException{
         long start = System.currentTimeMillis();
         Clinic c = new Clinic();

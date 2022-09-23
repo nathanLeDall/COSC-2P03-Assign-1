@@ -95,7 +95,7 @@ public class WaitQueue {
 
     /**
      *
-     * @return
+     * @return returns the patient removed from the queue
      */
     public Patient removeMax() throws noPatientException {
         if (startOfQueue==null){
