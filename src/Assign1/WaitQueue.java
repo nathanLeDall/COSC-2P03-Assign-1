@@ -19,6 +19,7 @@ public class WaitQueue {
     public void insert(Patient patient){
         Node tmp = startOfQueue;
         while(true){
+            //all of these conditional statements only run if the patient should be inserted into the slot that the conditional inserts into
             if (startOfQueue==null){//inserts the patient as the first node if the queue is empty
                 startOfQueue = new Node(patient);
                 return;
