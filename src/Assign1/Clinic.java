@@ -48,7 +48,8 @@ public class Clinic {
         Clock clock = new Clock(8,59);
         Clock timerCLock = new Clock(clock);
         int counter=0;
-        while(true){
+        boolean firstPatientOfTheDay = true;
+        while(counter<15){
             clock.addOneMinute();
             for (Patient p: patients){//adds a patient to the queue as they arrive according to their time of arrival data from the patients.txt file
                 if(p.getTimeOfArrival()==clock.getTime()){
@@ -56,15 +57,23 @@ public class Clinic {
                     break;
                 }
             }
-            if ((timerCLock.timeElapsed(clock))>=15){//removing a patient from the queue every 15 mins
+            if ((timerCLock.timeElapsed(clock))>=15) {//removing a patient from the queue every 15 mins
+                try {
+                    System.out.println(wq.removeMax());
+                } catch (noPatientException E) {
+                    System.out.println("no Patients in queue");
+                }
+                timerCLock = new Clock(clock);
+                counter++;
+            } else if(firstPatientOfTheDay && clock.getTime()>900){
                 try{
                     System.out.println(wq.removeMax());
                 }catch (noPatientException E){
                     System.out.println("no Patients in queue");
                 }
                 timerCLock = new Clock(clock);
-                System.out.println("counter = "+counter);
                 counter++;
+                firstPatientOfTheDay=false;
             }
         }
     }
@@ -81,6 +90,6 @@ public class Clinic {
         /*for(Patient p: c.patients){
             System.out.println(p);
         }*/
-        //c.monitor();
+        c.monitor();
     }
 }

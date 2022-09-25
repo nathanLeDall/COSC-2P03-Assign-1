@@ -30,7 +30,7 @@ public class WaitQueue {
             }
 
             if (startOfQueue.getNext()==null && startOfQueue.getPatient().getPriority()<patient.getPriority()){
-                startOfQueue.setPrev(new Node(patient,null,startOfQueue));
+                startOfQueue.setPrev(new Node(patient,startOfQueue,null));
                 startOfQueue = startOfQueue.getPrev();
                 return;
             }
@@ -41,9 +41,8 @@ public class WaitQueue {
                     return;
                 }
                 if (startOfQueue.getPatient().getTimeOfArrival()> patient.getTimeOfArrival()){
-                    Node tmp2 = new Node(patient,startOfQueue,null);
-                    startOfQueue.setPrev(tmp2);
-                    startOfQueue = tmp2;
+                    startOfQueue.setPrev(new Node(patient,startOfQueue,null));
+                    startOfQueue = startOfQueue.getPrev();
                     return;
                 }
 
@@ -60,8 +59,8 @@ public class WaitQueue {
             }
             if (tmp.getNext()==null && tmp.getPatient().getPriority()== patient.getPriority()){
                 if (tmp.getPatient().getTimeOfArrival() < patient.getTimeOfArrival()){
-                    Node tmp3 = new Node(patient,tmp,null);
-                    tmp.setPrev(tmp3);
+                    Node tmp3 = new Node(patient,null,tmp);
+                    tmp.setNext(tmp3);
                     return;
                 }
                 if (tmp.getPatient().getTimeOfArrival() > patient.getTimeOfArrival()){
