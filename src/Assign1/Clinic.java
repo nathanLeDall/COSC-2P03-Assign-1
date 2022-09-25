@@ -59,7 +59,7 @@ public class Clinic {
             }
             if (!onePatietnInQueue &&(timerCLock.timeElapsed(clock))>=15) {//removing a patient from the queue every 15 mins
                 try {
-                    System.out.println(wq.removeMax());
+                    System.out.println(wq.removeMax()+" the time is: "+clock.getTime());
                 } catch (noPatientException E) {
                     System.out.println("no Patients in queue");
                     onePatietnInQueue=true;
@@ -68,7 +68,7 @@ public class Clinic {
                 counter++;
             } else if(onePatietnInQueue && clock.getTime()>900){
                 try{
-                    System.out.println(wq.removeMax());
+                    System.out.println(wq.removeMax()+" the time is: "+clock.getTime());
                 }catch (noPatientException E){
                     System.out.println("no Patients in queue");
                 }
@@ -85,12 +85,8 @@ public class Clinic {
      * @throws IOException throws an IOExcpetion
      */
     public static void main(String[] args) throws  IOException{
-        long start = System.currentTimeMillis();
         Clinic c = new Clinic();
         c.readData();
-        /*for(Patient p: c.patients){
-            System.out.println(p);
-        }*/
         c.monitor();
     }
 }
