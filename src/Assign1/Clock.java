@@ -16,7 +16,7 @@ public class Clock {
 
     /**
      * constructor initializes hour and minute based on the values from the provided clock class
-     * @param c
+     * @param c the time to be set to input as a clock object
      */
     public Clock(Clock c){
         hour = c.getHour();
@@ -32,8 +32,8 @@ public class Clock {
     }
 
     /**
-     * sets the hour to a specefied value
-     * @param hour the value houe should be set to
+     * sets the hour to a specified value
+     * @param hour the value hour should be set to
      */
     public void setHour(int hour) {
         this.hour = hour;

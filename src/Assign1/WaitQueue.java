@@ -6,7 +6,7 @@ public class WaitQueue {
     private Node startOfQueue;
 
     /**
-     * constructor initializes the start of queue vairable to be null
+     * constructor initializes the start of queue variable to be null
      */
     public WaitQueue(){
         startOfQueue = null;
@@ -36,7 +36,7 @@ public class WaitQueue {
                     return;
                 }
 
-                if (startOfQueue.getNext() == null && startOfQueue.getPatient().getPriority() == patient.getPriority()) {//tie braker if the patients have the same priority
+                if (startOfQueue.getNext() == null && startOfQueue.getPatient().getPriority() == patient.getPriority()) {//tiebreaker if the patients have the same priority
                     if (startOfQueue.getPatient().getTimeOfArrival() < patient.getTimeOfArrival()) {//inserts the patient at the end of the queue if there is only one patient in the queue
                         startOfQueue.setNext(new Node(patient, null, startOfQueue));
                         return;
@@ -68,7 +68,7 @@ public class WaitQueue {
                 }
 
             }
-            if (tmp.getPrev()==null && tmp.getPatient().getPriority()< patient.getPriority()){// inserts the patient at the begining of the queue
+            if (tmp.getPrev()==null && tmp.getPatient().getPriority()< patient.getPriority()){// inserts the patient at the beginning of the queue
                 tmp.setPrev(new Node(patient,tmp,null));
                 startOfQueue = tmp.getPrev();
                 return;
@@ -87,7 +87,7 @@ public class WaitQueue {
                 tmp.setNext(tmp3);
                 return;
             }
-            if (tmp.getPatient().getTimeOfArrival()== patient.getTimeOfArrival()){//tie brake if the patients have the same priority
+            if (tmp.getPatient().getTimeOfArrival()== patient.getTimeOfArrival()){//tiebreaker if the patients have the same priority
                 if (tmp.getPrev()!=null && tmp.getNext()!=null && tmp.getPatient().getTimeOfArrival()< patient.getTimeOfArrival()){//inserts the patient to the left of the one in tmp
                     Node tmp2 = tmp.getPrev();
                     Node tmp3 = new Node(patient,tmp,null);

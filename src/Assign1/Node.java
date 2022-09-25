@@ -6,7 +6,7 @@ public class Node {
     private Node prev;//prev node
 
     /**
-     * constructor initializes all the varibales based on provided inputs
+     * constructor initializes all the variables based on provided inputs
      * @param patient the patient to store
      * @param next the next node in the queue
      * @param prev the prev node in the queue
@@ -18,7 +18,7 @@ public class Node {
     }
 
     /**
-     * construcor initializes variables patient based on provided data and sets prev and next to null
+     * constructor initializes variables patient based on provided data and sets prev and next to null
      * @param patient the patient to store in that node
      */
     public Node (Patient patient){
@@ -44,7 +44,7 @@ public class Node {
     }
 
     /**
-     * get the next ndoe
+     * get the next node
      * @return Node the next node
      */
     public Node getNext() {

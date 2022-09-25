@@ -42,13 +42,13 @@ public class Clinic {
     }
 
     /**
-     * monitors the clinic and adds patients to the queue as they arrive and removes them every 15 mins
+     * monitors the clinic and adds patients to the queue as they arrive and removes them every 15 minutes
      */
     public void monitor(){
         Clock clock = new Clock(8,59);
         Clock timerCLock = new Clock(clock);
         int counter=0;
-        boolean onePatietnInQueue = true;
+        boolean onePatientInQueue = true;
         while(counter<15){
             clock.addOneMinute();
             for (Patient p: patients){//adds a patient to the queue as they arrive according to their time of arrival data from the patients.txt file
@@ -57,16 +57,16 @@ public class Clinic {
                     break;
                 }
             }
-            if (!onePatietnInQueue &&(timerCLock.timeElapsed(clock))>=15) {//removing a patient from the queue every 15 mins
+            if (!onePatientInQueue &&(timerCLock.timeElapsed(clock))>=15) {//removing a patient from the queue every 15 minutes
                 try {
                     System.out.println(wq.removeMax()+" the time is: "+clock.getTime());
                 } catch (noPatientException E) {
                     System.out.println("no Patients in queue");
-                    onePatietnInQueue=true;
+                    onePatientInQueue=true;
                 }
                 timerCLock = new Clock(clock);
                 counter++;
-            } else if(onePatietnInQueue && clock.getTime()>900){
+            } else if(onePatientInQueue && clock.getTime()>900){
                 try{
                     System.out.println(wq.removeMax()+" the time is: "+clock.getTime());
                 }catch (noPatientException E){
@@ -74,7 +74,7 @@ public class Clinic {
                 }
                 timerCLock = new Clock(clock);
                 counter++;
-                onePatietnInQueue=false;
+                onePatientInQueue=false;
             }
         }
     }
@@ -82,7 +82,7 @@ public class Clinic {
     /**
      * main method
      * @param args takes in String[] args
-     * @throws IOException throws an IOExcpetion
+     * @throws IOException throws an IOException
      */
     public static void main(String[] args) throws  IOException{
         Clinic c = new Clinic();

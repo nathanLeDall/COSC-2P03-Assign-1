@@ -17,7 +17,7 @@ public class Patient {
     }
 
     /**
-     * construcor initializes variables to passed in values
+     * constructor initializes variables to passed in values
      * @param name name of the patient
      * @param age age of the patient
      * @param gender gender of the patient
@@ -37,7 +37,7 @@ public class Patient {
     }
 
     /**
-     * construcor initializes variables to passed in values except priority wich is set to 0 by default
+     * constructor initializes variables to passed in values except priority which is set to 0 by default
      * @param name name of the patient
      * @param age age of the patient
      * @param gender gender of the patient
@@ -56,7 +56,7 @@ public class Patient {
     }
 
     /**
-     * construcor initializes variables to passed in array and integer
+     * constructor initializes variables to passed in array and integer
      * @param info patients info in a String array
      * @param priority priority of the patient
      */
@@ -71,7 +71,7 @@ public class Patient {
     }
 
     /**
-     * construcor initializes variables to passed in array and assumes 0 for priority
+     * constructor initializes variables to passed in array and assumes 0 for priority
      * @param info patients info in a String array
      */
     public Patient(String[] info){
@@ -125,7 +125,7 @@ public class Patient {
     }
 
     /**
-     * set the the gender of hte patient
+     * set the gender of hte patient
      * @param gender new gender of the patient
      */
     public void setGender(String gender) {
@@ -165,7 +165,7 @@ public class Patient {
     }
 
     /**
-     * get the time of arrival of the parient
+     * get the time of arrival of the patient
      * @return the time of arrival of the patient
      */
     public int getTimeOfArrival() {
@@ -195,14 +195,14 @@ public class Patient {
     public int getPriority(){return priority;}
 
     /**
-     * adds a number to the currnet priority
+     * adds a number to the current priority
      * @param num the number to be added to the priority
      */
     public void addToPriority(int num){priority+=num;}
 
     /**
      * remove a number from the priority
-     * @param num theb number to be removed from the priority
+     * @param num the number to be removed from the priority
      */
     public void removeFromPriority(int num){priority-=num;}
 
