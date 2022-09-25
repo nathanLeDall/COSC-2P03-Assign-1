@@ -75,6 +75,7 @@ public class Clinic {
                 counter++;
                 firstPatientOfTheDay=false;
             }
+            System.out.println("tmp");
         }
     }
 
